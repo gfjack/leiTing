@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Api("留言板Api")
 @RequestMapping("/v1")
 public interface MessageApi {
@@ -27,4 +29,8 @@ public interface MessageApi {
     @ApiOperation("根据id删除留言")
     @RequestMapping(value = "/message/{message_id}", method = RequestMethod.DELETE)
     void delete(@PathVariable("message_id") Long messageId);
+
+    @ApiOperation("获取所有留言")
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
+    List<MessageVo> get();
 }
